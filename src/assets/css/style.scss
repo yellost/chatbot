@@ -1,0 +1,318 @@
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  background-color: #ebe4e4;
+  height: 100vh;
+  background-image: url("assets/img/bg_hakobio_1920x1080.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* BUTTON */
+.float-button {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 85px;
+  right: 25px;
+  background-color: #00b3b3;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 3px #999;
+  transition: 0.2s linear;
+  overflow: hidden;
+}
+.float-button .cross {
+  display: none;
+}
+.float-button.active .cross {
+  display: block;
+}
+.cross {
+  position: relative;
+}
+.line {
+  border: 2px solid white;
+  background-color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+}
+.line.left {
+  transform: translatex(-50%) rotateZ(45deg);
+}
+.line.right {
+  transform: translatex(-50%) rotateZ(-45deg);
+}
+.float-button.active > img {
+  position: absolute;
+  left: 200%;
+  opacity: 0;
+}
+
+.float-button:hover {
+  background-color: lighten(#00b3b3, 10%);
+  width: 140px;
+  animation: pulsecolor 1500ms infinite;
+  padding: 0 10px;
+  transition: 0.3s cubic-bezier(0.41, -0.86, 0.76, 1.89);
+}
+.float-button.active:hover {
+  width: 60px;
+  padding: 0;
+}
+.text-button {
+  width: 0;
+  opacity: 0;
+  transition: 0.2s opacity linear;
+  /* animation: fader 600ms forwards; */
+}
+
+.button-icon {
+  width: 40px;
+}
+
+.float-button:hover .text-button {
+  background-color: lighten(#00b3b3, 10%);
+  width: 140px;
+  opacity: 1;
+  animation: pulsecolor 1500ms infinite;
+}
+
+.float-button.active:hover .text-button {
+  width: 0;
+  opacity: 0;
+  transition: 0.2s opacity linear;
+}
+
+.my-float {
+  margin-top: 22px;
+}
+
+/* BOX CHAT */
+.box-chat {
+  width: 320px;
+  height: 0px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  transition: 0.3s all ease-in-out;
+  background: #fafafa;
+  right: 90px;
+  bottom: 140px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.3);
+}
+.box-chat.active {
+  height: 540px;
+}
+.box-chat.active.fullscreen {
+  height: 70vh;
+  width: 50vw;
+}
+
+/* box header */
+.box-header {
+  height: 20%;
+  background-color: #00b3b3;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.hand {
+  width: 45px;
+}
+
+.hi {
+  width: 70%;
+  color: #fff;
+  line-height: 28px;
+}
+
+.conv-container {
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* //////////<!-- ANSWER BOT-->///////////// */
+.chat-bubble {
+  background: #00b3b3;
+  padding: 8px 15px;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+/* USER chat bubble */
+.user-message-container {
+  display: flex;
+  justify-content: flex-end;
+  animation: revealup 0.5s 0s cubic-bezier(0, 0.57, 0.81, 1.01) forwards;
+}
+
+.chat-bubble.user {
+  background: #6e5ff3;
+  border-radius: 10px 10px 3px 10px;
+  margin: 20px 40px;
+}
+
+/* BOT chat bubble */
+.chat-bubble.bot {
+  box-shadow: 1px 1px 1px 2px #00000012;
+  background: #fff;
+  color: #5a5a5a;
+  margin: 0;
+  opacity: 1;
+  border-radius: 3px 10px 10px 10px;
+}
+
+.bot-message-container {
+  display: flex;
+  margin: 10px 0;
+  animation: revealup 0.5s 0.2s cubic-bezier(0, 0.57, 0.81, 1.01) forwards;
+}
+
+.bot-message-container > div:first-child {
+  margin: 0 10px;
+  width: 35px;
+  height: 35px;
+  background: red;
+  background: url("assets/img/chatbot-icon-06.png") no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.bot-message-container img {
+  border-radius: 50%;
+  max-width: 30px;
+}
+
+/* General bubble styles for both USER & BOT */
+.hidden {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
+
+/* ////////////////SUBMIT BAR/////////////// */
+
+.submit-bar {
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 10px 13px 10px 13px;
+  box-sizing: border-box;
+}
+
+input[type="text"] {
+  background: #f3f3f3;
+  border: none;
+  padding: 10px;
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+input[type="text"]:focus {
+  border-color: #333;
+}
+
+.btn {
+  padding: 17px 15px;
+  background: #f3f3f3;
+  border: 0 none;
+  cursor: pointer;
+  // width: 20%;
+  position: relative;
+}
+
+.fab {
+  font-size: 20px;
+  position: absolute;
+  right: 36px;
+  color: #00b3b3;
+  cursor: pointer;
+  top: 30%;
+  right: 25%;
+}
+
+.fas {
+  font-size: 24px;
+  color: #00b3b3;
+}
+
+@keyframes fader {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulsecolor {
+  0% {
+    fill: #ffffff;
+  }
+  50% {
+    fill: #13baff;
+  }
+  100% {
+    fill: #ffffff;
+  }
+}
+
+// anim wavy
+div#wave {
+  position: relative;
+  margin:0;
+
+  text-align: center;
+
+  height: 19px;
+
+  .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 3px;
+    background: #8a8a8a;
+    animation: wave 1s linear infinite;
+    &:nth-child(2) {
+      animation-delay: -.8s;
+    }
+    &:nth-child(3) {
+      animation-delay: -0.6s;
+    }
+  }
+}
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: initial;
+  }
+
+  30% {
+    transform: translateY(-6px);
+  }
+}
