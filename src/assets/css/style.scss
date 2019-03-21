@@ -130,13 +130,13 @@ body {
   align-items: center;
 }
 .hand {
-  width: 45px;
+  width: 80px;
 }
 
 .hi {
   width: 70%;
   color: #fff;
-  line-height: 28px;
+  line-height: 25px;
 }
 
 .conv-container {
@@ -151,17 +151,33 @@ body {
 
 /* //////////<!-- ANSWER BOT-->///////////// */
 .chat-bubble {
+  position: relative;
   background: #00b3b3;
   padding: 8px 15px;
   color: #fff;
   box-sizing: border-box;
 }
+.chat-bubble img {
+  position: relative;
+  z-index: 5;
+  width: 90%;
+  cursor: pointer;
+}
+
+// .chat-bubble img:hover {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(50% 50%);
+//   max-width: 80%;
+//   max-height: 80%;
+// }
 
 /* USER chat bubble */
 .user-message-container {
   display: flex;
   justify-content: flex-end;
-  animation: revealup 0.5s 0s cubic-bezier(0, 0.57, 0.81, 1.01) forwards;
+  // animation: revealup 0.5s 0s cubic-bezier(0, 0.57, 0.81, 1.01) forwards;
 }
 
 .chat-bubble.user {
@@ -175,15 +191,17 @@ body {
   box-shadow: 1px 1px 1px 2px #00000012;
   background: #fff;
   color: #5a5a5a;
-  margin: 0;
+  margin: 0 10px 0 0;
   opacity: 1;
   border-radius: 3px 10px 10px 10px;
+  max-width: calc(90% - 35px);
 }
 
 .bot-message-container {
+  position: relative;
   display: flex;
   margin: 10px 0;
-  animation: revealup 0.5s 0.2s cubic-bezier(0, 0.57, 0.81, 1.01) forwards;
+  // animation: revealup 0.5s 0.2s cubic-bezier(0, 0.57, 0.81, 1.01) forwards;
 }
 
 .bot-message-container > div:first-child {
@@ -191,12 +209,12 @@ body {
   width: 35px;
   height: 35px;
   background: red;
-  background: url("assets/img/chatbot-icon-06.png") no-repeat center center;
+  background: url("assets/img/profil-picture.png") no-repeat center center;
   background-size: cover;
   overflow: hidden;
 }
 
-.bot-message-container img {
+.bot-message-container>img {
   border-radius: 50%;
   max-width: 30px;
 }
@@ -242,6 +260,40 @@ input[type="text"]:focus {
   cursor: pointer;
   // width: 20%;
   position: relative;
+}
+
+.lightbox {
+  position: fixed;
+  top: -100vh;
+  left: -100vw;
+  transform: translate(-50%, -50%)
+}
+.lightbox>img{
+  position: relative;
+}
+
+.lightbox:before {
+  content:"";
+  background-color: rgba(0,0,0,.7);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%)
+}
+
+
+.lightbox.open {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+.lightbox.open:before {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
 }
 
 .fab {

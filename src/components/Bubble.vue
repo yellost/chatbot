@@ -4,7 +4,9 @@
      <!-- bot answer -->
         <div v-if= "type=='answer'" class="bot-message-container">
           <div class="img-avatar-container"></div>
-          <div class="chat-bubble bot">{{text}}</div>
+          <div class="chat-bubble bot">
+            <vue-markdown  :source="text"></vue-markdown>
+          </div>
         </div>
      <!-- bot images answer -->
         <!-- <div v-if= "type=='answer'  && images != ''" class="bot-message-container">
@@ -21,8 +23,12 @@
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown';
 export default {
-    props : ["type","text","images"]
+  components: {
+    VueMarkdown
+  },
+  props : ["type","text","images"],
 }
 </script>
 <style>
