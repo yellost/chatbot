@@ -57,7 +57,7 @@
         </button>
       </form>
     </div>
-    <div class="lightbox" :class="{open: isOpen}"><img :src="imgSrc" @click="close"></div>
+    <div class="lightbox" :class="{open: isOpen}" @click="close"><img :src="imgSrc" @click="close"></div>
   </div>
 
   <!-- /// -->
